@@ -1,0 +1,8 @@
+name: ${project.name}
+main: com.github.siloneco.DisableFriendlyFire
+version: ${project.version}
+author: siloneco
+description: ${project.description}
+permissions:
+  disablefriendlyfire.apply:
+    default: op
