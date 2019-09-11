@@ -3,6 +3,7 @@ main: com.github.siloneco.DisableFriendlyFire
 version: ${project.version}
 author: siloneco
 description: ${project.description}
+api-version: 1.13
 permissions:
   disablefriendlyfire.apply:
     default: op
