@@ -38,10 +38,6 @@ public class DamageCancelListener implements Listener {
             return;
         }
 
-        if ( !(attacker instanceof Trident) && !(attacker instanceof Arrow) ) {
-            return;
-        }
-
         if ( attacker instanceof Arrow ) {
 
             Arrow arrow = (Arrow) attacker;
