@@ -1,3 +1,22 @@
 # イベントを処理する優先度の設定。
 # 他プラグインとの競合で動作しなくなることがあるため、詳しくない場合は変更しないことをお勧めします
 EventPriority: MONITOR
+
+# 効果を無効化するポーションのリスト
+# ここに指定してあるエフェクトは disablefriendlyfire.apply 権限を持っている他プレイヤーに影響しません
+#
+# 全エフェクトの名前は以下を参照してください 
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/potion/PotionEffectType.html
+NegativePotionEffects:
+- BLINDNESS
+- CONFUSION
+- GLOWING
+- HARM
+- HUNGER
+- LEVITATION
+- POISON
+- SLOW
+- SLOW_DIGGING
+- UNLUCK
+- WEAKNESS
+- WITHER

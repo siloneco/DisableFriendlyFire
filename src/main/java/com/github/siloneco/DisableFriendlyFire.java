@@ -19,7 +19,7 @@ public class DisableFriendlyFire extends JavaPlugin {
         defaultConfig = new DefaultConfig(this);
         defaultConfig.loadConfig();
 
-        Bukkit.getPluginManager().registerEvents(new EventDistributor(this, new DamageCancelListener()), this);
+        Bukkit.getPluginManager().registerEvents(new EventDistributor(this, new DamageCancelListener(defaultConfig)), this);
 
         Bukkit.getLogger().info(getName() + " enabled.");
     }

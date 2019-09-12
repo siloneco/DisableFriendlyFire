@@ -1,8 +1,5 @@
 package com.github.siloneco.listeners;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
@@ -16,24 +13,14 @@ import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import com.github.siloneco.config.DefaultConfig;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class DamageCancelListener {
 
-    private final List<PotionEffectType> negativePotionEffectTypes = Arrays.asList(
-            PotionEffectType.BLINDNESS,
-            PotionEffectType.CONFUSION,
-            PotionEffectType.GLOWING,
-            PotionEffectType.HARM,
-            PotionEffectType.HUNGER,
-            PotionEffectType.LEVITATION,
-            PotionEffectType.POISON,
-            PotionEffectType.SLOW,
-            PotionEffectType.SLOW_DIGGING,
-            PotionEffectType.UNLUCK,
-            PotionEffectType.WEAKNESS,
-            PotionEffectType.WITHER);
+    private final DefaultConfig config;
 
     public void onNormalAttack(EntityDamageByEntityEvent e) {
         Entity ent = e.getEntity();
@@ -166,6 +153,6 @@ public class DamageCancelListener {
     }
 
     private boolean isNegativePotionEffect(PotionEffectType type) {
-        return negativePotionEffectTypes.contains(type);
+        return config.getNegativePotionEffectTypes().contains(type);
     }
 }
