@@ -68,7 +68,7 @@ public class DefaultConfig extends Config {
             for ( String typeStr : config.getStringList("NegativePotionEffects") ) {
                 try {
                     PotionEffectType type = PotionEffectType.getByName(typeStr);
-                    if ( type != null && negativePotionEffectTypes.contains(type) ) {
+                    if ( type != null && !negativePotionEffectTypes.contains(type) ) {
                         negativePotionEffectTypes.add(type);
                     }
                 } catch ( Exception e ) {
