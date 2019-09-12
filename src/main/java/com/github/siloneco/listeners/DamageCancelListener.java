@@ -10,9 +10,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.Trident;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
 import org.bukkit.event.entity.AreaEffectCloudApplyEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
@@ -22,7 +19,7 @@ import org.bukkit.potion.PotionEffectType;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class DamageCancelListener implements Listener {
+public class DamageCancelListener {
 
     private final List<PotionEffectType> negativePotionEffectTypes = Arrays.asList(
             PotionEffectType.BLINDNESS,
@@ -38,8 +35,7 @@ public class DamageCancelListener implements Listener {
             PotionEffectType.WEAKNESS,
             PotionEffectType.WITHER);
 
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onDamage(EntityDamageByEntityEvent e) {
+    public void onNormalAttack(EntityDamageByEntityEvent e) {
         Entity ent = e.getEntity();
         Entity attacker = e.getDamager();
 
@@ -56,8 +52,7 @@ public class DamageCancelListener implements Listener {
         e.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onDamageByArrowOr(EntityDamageByEntityEvent e) {
+    public void onDamageByArrowOrTrident(EntityDamageByEntityEvent e) {
         Entity ent = e.getEntity();
         Entity attacker = e.getDamager();
 
@@ -90,8 +85,7 @@ public class DamageCancelListener implements Listener {
         e.setCancelled(true);
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
-    public void onGetPotionEffect(PotionSplashEvent e) {
+    public void onNegativeEffectBySplashPotion(PotionSplashEvent e) {
 
         ThrownPotion pot = e.getPotion();
         if ( !(pot.getShooter() instanceof Player) ) {
@@ -128,7 +122,6 @@ public class DamageCancelListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.MONITOR)
     public void onGetPotionEffectFromAreaClouds(AreaEffectCloudApplyEvent e) {
         AreaEffectCloud potion = e.getEntity();
         if ( !(potion.getSource() instanceof Player) ) {
