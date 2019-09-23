@@ -3,7 +3,7 @@
 
   <groupId>com.github.siloneco</groupId>
   <artifactId>DisableFriendlyFire</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
 
   <name>${project.artifactId}</name>
   <description>Disable friendly fire</description>
