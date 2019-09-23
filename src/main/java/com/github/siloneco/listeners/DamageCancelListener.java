@@ -5,9 +5,11 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.entity.ThrownPotion;
 import org.bukkit.entity.Trident;
 import org.bukkit.event.entity.AreaEffectCloudApplyEvent;
+import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.potion.PotionEffect;
@@ -150,6 +152,26 @@ public class DamageCancelListener {
 
             e.setCancelled(true);
         }
+    }
+
+    public void onEntityCombustByEntityEvent(EntityCombustByEntityEvent e) {
+        if ( !(e.getEntity() instanceof Player) ) {
+            return;
+        }
+        Player p = (Player) e.getEntity();
+
+        if ( !(e.getCombuster() instanceof Projectile) ) {
+            return;
+        }
+        Projectile projectile = (Projectile) e.getCombuster();
+        if ( !(projectile.getShooter() instanceof Player) ) {
+            return;
+        }
+        if ( !p.hasPermission("disablefriendlyfire.apply") ) {
+            return;
+        }
+
+        e.setCancelled(true);
     }
 
     private boolean isNegativePotionEffect(PotionEffectType type) {

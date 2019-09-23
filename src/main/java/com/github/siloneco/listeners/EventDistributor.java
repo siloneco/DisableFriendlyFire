@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.AreaEffectCloudApplyEvent;
+import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PotionSplashEvent;
 
@@ -143,5 +144,46 @@ public class EventDistributor implements Listener {
     public void potionSplashEventMonitor(PotionSplashEvent e) {
         if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.MONITOR )
             listener.onNegativeEffectBySplashPotion(e);
+    }
+
+
+    /**
+     *
+     */
+
+    @EventHandler
+    public void EntityCombustByEntityEventLowest(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.LOWEST )
+            listener.onEntityCombustByEntityEvent(e);
+    }
+
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    public void EntityCombustByEntityEventLow(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.LOW )
+            listener.onEntityCombustByEntityEvent(e);
+    }
+
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void EntityCombustByEntityEventNormal(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.NORMAL )
+            listener.onEntityCombustByEntityEvent(e);
+    }
+
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    public void EntityCombustByEntityEventHigh(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.HIGH )
+            listener.onEntityCombustByEntityEvent(e);
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void EntityCombustByEntityEventHighest(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.HIGHEST )
+            listener.onEntityCombustByEntityEvent(e);
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void EntityCombustByEntityEventMonitor(EntityCombustByEntityEvent e) {
+        if ( plugin.getDefaultConfig().getEventPriority() == EventPriority.MONITOR )
+            listener.onEntityCombustByEntityEvent(e);
     }
 }
