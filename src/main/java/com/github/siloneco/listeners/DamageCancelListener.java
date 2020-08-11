@@ -1,13 +1,6 @@
 package com.github.siloneco.listeners;
 
-import org.bukkit.entity.AreaEffectCloud;
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
-import org.bukkit.entity.ThrownPotion;
-import org.bukkit.entity.Trident;
+import org.bukkit.entity.*;
 import org.bukkit.event.entity.AreaEffectCloudApplyEvent;
 import org.bukkit.event.entity.EntityCombustByEntityEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -54,6 +47,13 @@ public class DamageCancelListener {
             Arrow arrow = (Arrow) attacker;
 
             if ( !(arrow.getShooter() instanceof Player) ) {
+                return;
+            }
+        } else if ( attacker instanceof SpectralArrow) {
+
+            SpectralArrow s_arrow = (SpectralArrow) attacker;
+
+            if ( !(s_arrow.getShooter() instanceof Player) ) {
                 return;
             }
         } else if ( attacker instanceof Trident ) {
